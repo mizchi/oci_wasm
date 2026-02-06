@@ -1,0 +1,18 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "mizchi/warg/discovery"
+
+import {
+  "mizchi/warg/types",
+}
+
+// Values
+pub async fn fetch_registry_config(String) -> @types.RegistryConfig
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits
+

@@ -1,0 +1,31 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "mizchi/warg/oci"
+
+import {
+  "mizchi/warg/types",
+}
+
+// Values
+pub async fn fetch_token(String, String) -> String
+
+// Errors
+
+// Types and methods
+pub struct OciClient {
+  registry : String
+  namespace_prefix : String
+  mut token : String
+}
+pub async fn OciClient::auth_for(Self, @types.PackageName) -> Unit
+pub async fn OciClient::get_blob(Self, @types.PackageName, String, expected_size? : Int64) -> Bytes
+pub async fn OciClient::get_blob_text(Self, @types.PackageName, String, expected_size? : Int64) -> String
+pub async fn OciClient::get_manifest(Self, @types.PackageName, String) -> @types.OciManifest
+pub async fn OciClient::get_wasm_config(Self, @types.PackageName, String) -> @types.WasmConfig
+pub async fn OciClient::list_tags(Self, @types.PackageName) -> Array[String]
+pub async fn OciClient::new(String, String, @types.PackageName) -> Self
+pub async fn OciClient::pull_wasm(Self, @types.PackageName, String) -> Bytes
+
+// Type aliases
+
+// Traits
+

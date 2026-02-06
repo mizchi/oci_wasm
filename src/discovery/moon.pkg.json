@@ -1,0 +1,7 @@
+{
+  "import": [
+    "mizchi/warg/types",
+    "mizchi/warg/ffi",
+    "moonbitlang/core/builtin"
+  ]
+}

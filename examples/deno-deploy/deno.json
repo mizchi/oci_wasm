@@ -1,0 +1,17 @@
+{
+  "tasks": {
+    "dev": "deno run -A --watch main.ts",
+    "start": "deno run -A main.ts"
+  },
+  "deploy": {
+    "include": [
+      "main.ts",
+      "types.ts",
+      "discovery.ts",
+      "oci_auth.ts",
+      "oci_client.ts",
+      "deno.json"
+    ],
+    "entrypoint": "main.ts"
+  }
+}

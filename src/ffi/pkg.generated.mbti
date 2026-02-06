@@ -1,0 +1,36 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "mizchi/warg/ffi"
+
+import {
+  "moonbitlang/async/js_async",
+}
+
+// Values
+pub async fn fetch_json(String) -> (Int, Json)
+
+pub async fn fetch_json_with_headers(String, Map[String, String]) -> (Int, Json, JsResponse)
+
+pub async fn fetch_manual_redirect(String, Map[String, String]) -> JsResponse
+
+pub async fn fetch_simple(String) -> JsResponse
+
+pub async fn fetch_with_headers(String, Map[String, String]) -> JsResponse
+
+pub async fn sha256_hex(Bytes) -> String
+
+pub fn url_encode(String) -> String
+
+// Errors
+
+// Types and methods
+#external
+pub type JsResponse
+pub fn JsResponse::bytes(Self) -> @js_async.Promise[Bytes]
+pub fn JsResponse::get_header(Self, String) -> String
+pub fn JsResponse::status(Self) -> Int
+pub fn JsResponse::text(Self) -> @js_async.Promise[String]
+
+// Type aliases
+
+// Traits
+

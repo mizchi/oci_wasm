@@ -1,0 +1,10 @@
+{
+  "import": [
+    "mizchi/warg/types",
+    "mizchi/warg/discovery",
+    "mizchi/warg/oci",
+    "moonbitlang/async",
+    "moonbitlang/core/builtin"
+  ],
+  "is-main": true
+}

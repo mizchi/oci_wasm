@@ -1,0 +1,10 @@
+{
+  "import": [
+    "moonbitlang/async/js_async",
+    "moonbitlang/core/json"
+  ],
+  "targets": {
+    "fetch.mbt": ["js"],
+    "crypto.mbt": ["js"]
+  }
+}

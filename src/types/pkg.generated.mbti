@@ -1,0 +1,113 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "mizchi/warg/types"
+
+// Values
+pub let manifest_media_type : String
+
+pub fn validate_digest(String) -> Bool
+
+pub fn validate_hostname(String) -> Bool
+
+pub fn validate_https_url(String) -> Bool
+
+pub fn validate_name_component(String) -> Bool
+
+pub fn validate_namespace_prefix(String) -> Bool
+
+pub fn validate_reference(String) -> Bool
+
+pub let wasm_config_media_type : String
+
+pub let wasm_media_type : String
+
+// Errors
+
+// Types and methods
+pub struct AnyHash {
+  algorithm : String
+  hex : String
+}
+pub fn AnyHash::parse(String) -> Self?
+pub fn AnyHash::to_string(Self) -> String
+pub impl Eq for AnyHash
+pub impl Show for AnyHash
+
+pub struct OciConfig {
+  registry : String
+  namespace_prefix : String
+}
+pub impl Eq for OciConfig
+pub impl Show for OciConfig
+
+pub struct OciDescriptor {
+  media_type : String
+  size : Int64
+  digest : String
+}
+pub fn OciDescriptor::from_json(Json) -> Self?
+pub impl Eq for OciDescriptor
+pub impl Show for OciDescriptor
+
+pub struct OciManifest {
+  schema_version : Int
+  media_type : String
+  config : OciDescriptor
+  layers : Array[OciDescriptor]
+}
+pub fn OciManifest::from_json(Json) -> Self?
+pub impl Eq for OciManifest
+pub impl Show for OciManifest
+
+pub struct PackageName {
+  ns : String
+  name : String
+}
+pub fn PackageName::parse(String) -> Self?
+pub fn PackageName::to_string(Self) -> String
+pub impl Eq for PackageName
+pub impl Show for PackageName
+
+pub enum RegistryBackend {
+  Oci(OciConfig)
+  Warg(WargConfig)
+}
+pub impl Eq for RegistryBackend
+pub impl Show for RegistryBackend
+
+pub struct RegistryConfig {
+  preferred : RegistryBackend
+  oci : OciConfig?
+  warg : WargConfig?
+}
+pub fn RegistryConfig::from_json(Json) -> Self?
+pub impl Eq for RegistryConfig
+pub impl Show for RegistryConfig
+
+pub struct WargConfig {
+  url : String
+}
+pub impl Eq for WargConfig
+pub impl Show for WargConfig
+
+pub struct WasmComponentInfo {
+  exports : Array[String]
+  imports : Array[String]
+  target : String?
+}
+pub fn WasmComponentInfo::from_json(Json) -> Self?
+pub impl Eq for WasmComponentInfo
+pub impl Show for WasmComponentInfo
+
+pub struct WasmConfig {
+  architecture : String
+  os : String
+  component : WasmComponentInfo?
+}
+pub fn WasmConfig::from_json(Json) -> Self?
+pub impl Eq for WasmConfig
+pub impl Show for WasmConfig
+
+// Type aliases
+
+// Traits
+

@@ -1,0 +1,18 @@
+{
+  "name": "mizchi/warg",
+  "version": "0.2.0",
+  "deps": {
+    "moonbitlang/async": "0.16.2"
+  },
+  "readme": "README.mbt.md",
+  "repository": "https://github.com/mizchi/warg",
+  "license": "Apache-2.0",
+  "keywords": [
+    "wasm",
+    "oci",
+    "registry"
+  ],
+  "description": "WebAssembly package registry client",
+  "source": "src",
+  "preferred-target": "js"
+}

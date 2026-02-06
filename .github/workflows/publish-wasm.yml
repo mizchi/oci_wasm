@@ -1,0 +1,63 @@
+name: Publish Wasm Component
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'examples/minimal-component/**'
+      - '.github/workflows/publish-wasm.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: mizchi/warg/hello-component
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install wasm-tools
+        run: |
+          curl -LO https://github.com/bytecodealliance/wasm-tools/releases/download/v1.225.0/wasm-tools-1.225.0-x86_64-linux.tar.gz
+          tar xzf wasm-tools-*.tar.gz
+          sudo mv wasm-tools-*/wasm-tools /usr/local/bin/
+          wasm-tools --version
+
+      - uses: oras-project/setup-oras@v1
+
+      - name: Build wasm component
+        run: |
+          cd examples/minimal-component
+          wasm-tools parse hello.wat -o hello.wasm
+          wasm-tools component new hello.wasm -o hello.component.wasm
+          wasm-tools validate hello.component.wasm
+
+      - name: Login to ghcr.io
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | oras login ghcr.io -u "${{ github.actor }}" --password-stdin
+
+      - name: Push OCI artifact
+        run: |
+          echo '{"architecture":"wasm","os":"wasip2"}' > /tmp/config.json
+          SHORT_SHA=$(echo "${{ github.sha }}" | head -c 7)
+          oras push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest \
+            --config /tmp/config.json:application/vnd.wasm.config.v0+json \
+            examples/minimal-component/hello.component.wasm:application/wasm
+          oras push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:sha-${SHORT_SHA} \
+            --config /tmp/config.json:application/vnd.wasm.config.v0+json \
+            examples/minimal-component/hello.component.wasm:application/wasm
+
+      - name: Verify (pull back)
+        run: |
+          mkdir -p /tmp/verify && cd /tmp/verify
+          oras pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          wasm-tools validate hello.component.wasm
+          echo "OK: artifact pulled and validated"
+
+      - name: Verify manifest
+        run: oras manifest fetch ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest

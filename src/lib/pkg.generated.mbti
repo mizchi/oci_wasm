@@ -1,0 +1,26 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "mizchi/warg/lib"
+
+import {
+  "moonbitlang/async/js_async",
+}
+
+// Values
+pub fn discover(String) -> @js_async.Promise[Json]
+
+pub fn get_manifest(String, String, String, String) -> @js_async.Promise[Json]
+
+pub fn get_wasm_config(String, String, String, String) -> @js_async.Promise[Json]
+
+pub fn list_tags(String, String, String) -> @js_async.Promise[Json]
+
+pub fn pull_wasm(String, String, String, String) -> @js_async.Promise[Bytes]
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits
+
