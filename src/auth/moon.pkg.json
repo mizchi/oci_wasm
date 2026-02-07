@@ -2,8 +2,6 @@
   "import": [
     "mizchi/warg/types",
     "mizchi/warg/ffi",
-    "mizchi/warg/auth",
-    "moonbitlang/core/json",
     "moonbitlang/core/builtin"
   ]
 }

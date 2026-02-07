@@ -6,7 +6,6 @@ import {
 }
 
 // Values
-pub async fn fetch_token(String, String) -> String
 
 // Errors
 

@@ -45,6 +45,7 @@ pub struct OciDescriptor {
   digest : String
 }
 pub fn OciDescriptor::from_json(Json) -> Self?
+pub fn OciDescriptor::to_json(Self) -> Json
 pub impl Eq for OciDescriptor
 pub impl Show for OciDescriptor
 
@@ -55,6 +56,7 @@ pub struct OciManifest {
   layers : Array[OciDescriptor]
 }
 pub fn OciManifest::from_json(Json) -> Self?
+pub fn OciManifest::to_json(Self) -> Json
 pub impl Eq for OciManifest
 pub impl Show for OciManifest
 
@@ -80,6 +82,7 @@ pub struct RegistryConfig {
   warg : WargConfig?
 }
 pub fn RegistryConfig::from_json(Json) -> Self?
+pub fn RegistryConfig::to_json(Self) -> Json
 pub impl Eq for RegistryConfig
 pub impl Show for RegistryConfig
 
@@ -104,6 +107,7 @@ pub struct WasmConfig {
   component : WasmComponentInfo?
 }
 pub fn WasmConfig::from_json(Json) -> Self?
+pub fn WasmConfig::to_json(Self) -> Json
 pub impl Eq for WasmConfig
 pub impl Show for WasmConfig
 

@@ -36,7 +36,7 @@ pub async fn OciClient::new(
   }
   validate_pkg(pkg)
   let repo = "\{namespace_prefix}\{pkg.ns}/\{pkg.name}"
-  let token = fetch_token(registry, repo)
+  let token = @auth.fetch_token(registry, repo)
   OciClient::{ registry, namespace_prefix, token }
 }
 
@@ -62,7 +62,7 @@ pub async fn OciClient::auth_for(
 ) -> Unit raise Error {
   validate_pkg(pkg)
   let repo = self.repo_name(pkg)
-  self.token = fetch_token(self.registry, repo)
+  self.token = @auth.fetch_token(self.registry, repo)
 }
 
 ///|

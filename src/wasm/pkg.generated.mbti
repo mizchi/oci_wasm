@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "mizchi/warg/lib"
+package "mizchi/warg/wasm"
 
 import {
   "moonbitlang/async/js_async",
