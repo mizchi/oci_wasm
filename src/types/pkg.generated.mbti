@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "mizchi/warg/types"
+package "mizchi/oci-wasm/types"
 
 // Values
 pub let manifest_media_type : String
