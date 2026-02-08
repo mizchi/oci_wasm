@@ -14,7 +14,7 @@ permissions:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: mizchi/oci-wasm/hello-component
+  IMAGE_NAME: mizchi/oci_wasm/hello-component
 
 jobs:
   publish:

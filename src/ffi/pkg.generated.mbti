@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "mizchi/oci-wasm/ffi"
+package "mizchi/oci_wasm/ffi"
 
 import {
   "moonbitlang/async/js_async",

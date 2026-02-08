@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "mizchi/oci-wasm/auth"
+package "mizchi/oci_wasm/auth"
 
 // Values
 pub async fn fetch_token(String, String) -> String

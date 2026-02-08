@@ -1,11 +1,11 @@
 {
-  "name": "mizchi/oci-wasm",
+  "name": "mizchi/oci_wasm",
   "version": "0.2.0",
   "deps": {
     "moonbitlang/async": "0.16.2"
   },
   "readme": "README.mbt.md",
-  "repository": "https://github.com/mizchi/oci-wasm",
+  "repository": "https://github.com/mizchi/oci_wasm",
   "license": "Apache-2.0",
   "keywords": [
     "wasm",

@@ -1,8 +1,8 @@
 {
   "import": [
-    "mizchi/oci-wasm/types",
-    "mizchi/oci-wasm/discovery",
-    "mizchi/oci-wasm/oci",
+    "mizchi/oci_wasm/types",
+    "mizchi/oci_wasm/discovery",
+    "mizchi/oci_wasm/oci",
     "moonbitlang/async",
     "moonbitlang/core/builtin"
   ],

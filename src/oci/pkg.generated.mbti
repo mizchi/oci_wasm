@@ -1,8 +1,8 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "mizchi/oci-wasm/oci"
+package "mizchi/oci_wasm/oci"
 
 import {
-  "mizchi/oci-wasm/types",
+  "mizchi/oci_wasm/types",
 }
 
 // Values

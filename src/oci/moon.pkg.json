@@ -1,8 +1,8 @@
 {
   "import": [
-    "mizchi/oci-wasm/types",
-    "mizchi/oci-wasm/ffi",
-    "mizchi/oci-wasm/auth",
+    "mizchi/oci_wasm/types",
+    "mizchi/oci_wasm/ffi",
+    "mizchi/oci_wasm/auth",
     "moonbitlang/core/json",
     "moonbitlang/core/builtin"
   ]
