@@ -1,6 +1,7 @@
 {
   "is-main": true,
   "supported-targets": ["js"],
+  "warn-list": "-14",
   "import": [
     "mizchi/oci_wasm/types",
     "mizchi/oci_wasm/discovery",

@@ -1,10 +1,14 @@
 {
   "import": [
     "moonbitlang/async/js_async",
+    "moonbitlang/async/http",
     "moonbitlang/core/json"
   ],
+  "warn-list": "-29-67",
   "targets": {
     "fetch.mbt": ["js"],
-    "crypto.mbt": ["js"]
+    "crypto.mbt": ["js"],
+    "fetch_native.mbt": ["native"],
+    "crypto_native.mbt": ["native"]
   }
 }

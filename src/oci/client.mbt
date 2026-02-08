@@ -147,7 +147,7 @@ async fn safe_redirect_get(location : String) -> Bytes raise Error {
   guard response.status() == 200 else {
     raise Failure::Failure("redirect target returned \{response.status()}")
   }
-  response.bytes().wait()
+  response.bytes()
 }
 
 ///|
@@ -160,7 +160,7 @@ async fn safe_redirect_get_text(location : String) -> String raise Error {
   guard response.status() == 200 else {
     raise Failure::Failure("redirect target returned \{response.status()}")
   }
-  response.text().wait()
+  response.text()
 }
 
 ///|
@@ -200,7 +200,7 @@ pub async fn OciClient::get_blob(
   let response = @ffi.fetch_manual_redirect(url, self.auth_headers())
   let status = response.status()
   let data : Bytes = if status == 200 {
-    response.bytes().wait()
+    response.bytes()
   } else if status == 307 || status == 302 || status == 301 {
     let location = response.get_header("location")
     guard location != "" else {
@@ -241,7 +241,7 @@ pub async fn OciClient::get_blob_text(
   let response = @ffi.fetch_manual_redirect(url, self.auth_headers())
   let status = response.status()
   let text : String = if status == 200 {
-    response.text().wait()
+    response.text()
   } else if status == 307 || status == 302 || status == 301 {
     let location = response.get_header("location")
     guard location != "" else {
