@@ -3,5 +3,9 @@
     "mizchi/oci_wasm/types",
     "mizchi/oci_wasm/ffi",
     "moonbitlang/core/builtin"
-  ]
+  ],
+  "targets": {
+    "auth.mbt": ["native", "js"],
+    "auth_wbtest.mbt": ["native", "js"]
+  }
 }

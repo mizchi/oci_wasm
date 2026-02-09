@@ -5,5 +5,8 @@
     "mizchi/oci_wasm/auth",
     "moonbitlang/core/json",
     "moonbitlang/core/builtin"
-  ]
+  ],
+  "targets": {
+    "client.mbt": ["native", "js"]
+  }
 }
