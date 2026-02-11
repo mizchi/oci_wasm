@@ -1,0 +1,9 @@
+import {
+  "mizchi/oci_wasm/types",
+  "mizchi/oci_wasm/ffi",
+  "moonbitlang/core/builtin",
+}
+
+options(
+  targets: { "discovery.mbt": [ "native", "js" ] },
+)

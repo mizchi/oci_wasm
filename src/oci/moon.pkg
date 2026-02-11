@@ -1,0 +1,11 @@
+import {
+  "mizchi/oci_wasm/types",
+  "mizchi/oci_wasm/ffi",
+  "mizchi/oci_wasm/auth",
+  "moonbitlang/core/json",
+  "moonbitlang/core/builtin",
+}
+
+options(
+  targets: { "client.mbt": [ "native", "js" ] },
+)

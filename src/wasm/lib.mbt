@@ -14,7 +14,7 @@ fn tags_to_json(tags : Array[String]) -> Json {
 
 ///|
 pub fn discover(host : String) -> @js_async.Promise[Json] {
-  @js_async.Promise::from_async(fn() {
+  @js_async.Promise::from_async(async fn() {
     let config = @discovery.fetch_registry_config(host)
     config.to_json()
   })
@@ -26,7 +26,7 @@ pub fn list_tags(
   ns_prefix : String,
   pkg_str : String,
 ) -> @js_async.Promise[Json] {
-  @js_async.Promise::from_async(fn() {
+  @js_async.Promise::from_async(async fn() {
     let pkg = match @types.PackageName::parse(pkg_str) {
       Some(p) => p
       None => raise Failure::Failure("invalid package name: \{pkg_str}")
@@ -44,7 +44,7 @@ pub fn get_manifest(
   pkg_str : String,
   reference : String,
 ) -> @js_async.Promise[Json] {
-  @js_async.Promise::from_async(fn() {
+  @js_async.Promise::from_async(async fn() {
     let pkg = match @types.PackageName::parse(pkg_str) {
       Some(p) => p
       None => raise Failure::Failure("invalid package name: \{pkg_str}")
@@ -62,7 +62,7 @@ pub fn get_wasm_config(
   pkg_str : String,
   reference : String,
 ) -> @js_async.Promise[Json] {
-  @js_async.Promise::from_async(fn() {
+  @js_async.Promise::from_async(async fn() {
     let pkg = match @types.PackageName::parse(pkg_str) {
       Some(p) => p
       None => raise Failure::Failure("invalid package name: \{pkg_str}")
@@ -80,7 +80,7 @@ pub fn pull_wasm(
   pkg_str : String,
   version : String,
 ) -> @js_async.Promise[Bytes] {
-  @js_async.Promise::from_async(fn() {
+  @js_async.Promise::from_async(async fn() {
     let pkg = match @types.PackageName::parse(pkg_str) {
       Some(p) => p
       None => raise Failure::Failure("invalid package name: \{pkg_str}")

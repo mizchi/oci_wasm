@@ -1,0 +1,11 @@
+import {
+  "mizchi/oci_wasm/types",
+  "mizchi/oci_wasm/discovery",
+  "mizchi/oci_wasm/oci",
+  "moonbitlang/async",
+  "moonbitlang/core/builtin",
+}
+
+options(
+  "is-main": true,
+)
