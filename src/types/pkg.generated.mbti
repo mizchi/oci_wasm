@@ -26,27 +26,35 @@ pub let wasm_media_type : String
 pub struct AnyHash {
   algorithm : String
   hex : String
-}
+} derive(Eq)
+pub fn AnyHash::equal(Self, Self) -> Bool
+pub fn AnyHash::not_equal(Self, Self) -> Bool
+pub fn AnyHash::output(Self, &Logger) -> Unit
 pub fn AnyHash::parse(String) -> Self?
 pub fn AnyHash::to_string(Self) -> String
-pub impl Eq for AnyHash
 pub impl Show for AnyHash
 
 pub struct OciConfig {
   registry : String
   namespace_prefix : String
-}
-pub impl Eq for OciConfig
+} derive(Eq)
+pub fn OciConfig::equal(Self, Self) -> Bool
+pub fn OciConfig::not_equal(Self, Self) -> Bool
+pub fn OciConfig::output(Self, &Logger) -> Unit
+pub fn OciConfig::to_string(Self) -> String
 pub impl Show for OciConfig
 
 pub struct OciDescriptor {
   media_type : String
   size : Int64
   digest : String
-}
+} derive(Eq)
+pub fn OciDescriptor::equal(Self, Self) -> Bool
 pub fn OciDescriptor::from_json(Json) -> Self?
+pub fn OciDescriptor::not_equal(Self, Self) -> Bool
+pub fn OciDescriptor::output(Self, &Logger) -> Unit
 pub fn OciDescriptor::to_json(Self) -> Json
-pub impl Eq for OciDescriptor
+pub fn OciDescriptor::to_string(Self) -> String
 pub impl Show for OciDescriptor
 
 pub struct OciManifest {
@@ -54,64 +62,83 @@ pub struct OciManifest {
   media_type : String
   config : OciDescriptor
   layers : Array[OciDescriptor]
-}
+} derive(Eq)
+pub fn OciManifest::equal(Self, Self) -> Bool
 pub fn OciManifest::from_json(Json) -> Self?
+pub fn OciManifest::not_equal(Self, Self) -> Bool
+pub fn OciManifest::output(Self, &Logger) -> Unit
 pub fn OciManifest::to_json(Self) -> Json
-pub impl Eq for OciManifest
+pub fn OciManifest::to_string(Self) -> String
 pub impl Show for OciManifest
 
 pub struct PackageName {
   ns : String
   name : String
-}
+} derive(Eq)
+pub fn PackageName::equal(Self, Self) -> Bool
+pub fn PackageName::not_equal(Self, Self) -> Bool
+pub fn PackageName::output(Self, &Logger) -> Unit
 pub fn PackageName::parse(String) -> Self?
 pub fn PackageName::to_string(Self) -> String
-pub impl Eq for PackageName
 pub impl Show for PackageName
 
 pub enum RegistryBackend {
   Oci(OciConfig)
   Warg(WargConfig)
-}
-pub impl Eq for RegistryBackend
+} derive(Eq)
+pub fn RegistryBackend::equal(Self, Self) -> Bool
+pub fn RegistryBackend::not_equal(Self, Self) -> Bool
+pub fn RegistryBackend::output(Self, &Logger) -> Unit
+pub fn RegistryBackend::to_string(Self) -> String
 pub impl Show for RegistryBackend
 
 pub struct RegistryConfig {
   preferred : RegistryBackend
   oci : OciConfig?
   warg : WargConfig?
-}
+} derive(Eq)
+pub fn RegistryConfig::equal(Self, Self) -> Bool
 pub fn RegistryConfig::from_json(Json) -> Self?
+pub fn RegistryConfig::not_equal(Self, Self) -> Bool
+pub fn RegistryConfig::output(Self, &Logger) -> Unit
 pub fn RegistryConfig::to_json(Self) -> Json
-pub impl Eq for RegistryConfig
+pub fn RegistryConfig::to_string(Self) -> String
 pub impl Show for RegistryConfig
 
 pub struct WargConfig {
   url : String
-}
-pub impl Eq for WargConfig
+} derive(Eq)
+pub fn WargConfig::equal(Self, Self) -> Bool
+pub fn WargConfig::not_equal(Self, Self) -> Bool
+pub fn WargConfig::output(Self, &Logger) -> Unit
+pub fn WargConfig::to_string(Self) -> String
 pub impl Show for WargConfig
 
 pub struct WasmComponentInfo {
   exports : Array[String]
   imports : Array[String]
   target : String?
-}
+} derive(Eq)
+pub fn WasmComponentInfo::equal(Self, Self) -> Bool
 pub fn WasmComponentInfo::from_json(Json) -> Self?
-pub impl Eq for WasmComponentInfo
+pub fn WasmComponentInfo::not_equal(Self, Self) -> Bool
+pub fn WasmComponentInfo::output(Self, &Logger) -> Unit
+pub fn WasmComponentInfo::to_string(Self) -> String
 pub impl Show for WasmComponentInfo
 
 pub struct WasmConfig {
   architecture : String
   os : String
   component : WasmComponentInfo?
-}
+} derive(Eq)
+pub fn WasmConfig::equal(Self, Self) -> Bool
 pub fn WasmConfig::from_json(Json) -> Self?
+pub fn WasmConfig::not_equal(Self, Self) -> Bool
+pub fn WasmConfig::output(Self, &Logger) -> Unit
 pub fn WasmConfig::to_json(Self) -> Json
-pub impl Eq for WasmConfig
+pub fn WasmConfig::to_string(Self) -> String
 pub impl Show for WasmConfig
 
 // Type aliases
 
 // Traits
-

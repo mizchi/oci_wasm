@@ -23,4 +23,3 @@ pub fn pull_wasm(String, String, String, String) -> @js_async.Promise[Bytes]
 // Type aliases
 
 // Traits
-

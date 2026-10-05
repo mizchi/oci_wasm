@@ -17,7 +17,7 @@ pub fn validate_name_component(s : String) -> Bool {
     return false
   }
   for c in s {
-    if not(is_valid_name_char(c)) {
+    if !is_valid_name_char(c) {
       return false
     }
   }
@@ -138,19 +138,19 @@ pub fn validate_namespace_prefix(s : String) -> Bool {
 ///|
 /// Validate a URL is safe (https only, no private networks).
 pub fn validate_https_url(url : String) -> Bool {
-  if not(url.has_prefix("https://")) {
+  if !url.has_prefix("https://") {
     return false
   }
   // Extract host part
-  let after_scheme = url.view(start_offset=8).to_string()
+  let after_scheme = url.view(start_offset=8).to_owned()
   let host_end = match after_scheme.find("/") {
     Some(idx) => idx
     None => after_scheme.length()
   }
-  let host = after_scheme.view(end_offset=host_end).to_string()
+  let host = after_scheme.view(end_offset=host_end).to_owned()
   // Strip port if present
   let hostname = match host.find(":") {
-    Some(idx) => host.view(end_offset=idx).to_string()
+    Some(idx) => host.view(end_offset=idx).to_owned()
     None => host
   }
   // Block private/reserved addresses
@@ -166,10 +166,10 @@ pub fn validate_https_url(url : String) -> Bool {
   if hostname.has_prefix("172.") {
     match hostname.find(".") {
       Some(first_dot) => {
-        let rest = hostname.view(start_offset=first_dot + 1).to_string()
+        let rest = hostname.view(start_offset=first_dot + 1).to_owned()
         match rest.find(".") {
           Some(second_dot) => {
-            let second_octet_str = rest.view(end_offset=second_dot).to_string()
+            let second_octet_str = rest.view(end_offset=second_dot).to_owned()
             // Parse second octet manually
             let mut val = 0
             let mut valid = true

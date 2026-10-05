@@ -52,8 +52,8 @@ async fn main {
   println("  os: \{wasm_config.os}")
   match wasm_config.component {
     Some(comp) => {
-      println("  exports: \{comp.exports}")
-      println("  imports: \{comp.imports}")
+      println("  exports: [" + comp.exports.join(", ") + "]")
+      println("  imports: [" + comp.imports.join(", ") + "]")
     }
     None => println("  no component info")
   }

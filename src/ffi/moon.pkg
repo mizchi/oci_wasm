@@ -12,5 +12,6 @@ options(
     "crypto_native.mbt": [ "native" ],
     "fetch.mbt": [ "js" ],
     "fetch_native.mbt": [ "native" ],
+    "fetch_native_wbtest.mbt": [ "native" ],
   },
 )

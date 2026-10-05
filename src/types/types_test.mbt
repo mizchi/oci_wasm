@@ -1,13 +1,13 @@
 ///|
 test "PackageName::parse valid" {
   let pkg = @types.PackageName::parse("wasi:http")
-  inspect(pkg, content="Some({ns: \"wasi\", name: \"http\"})")
+  assert_true(pkg is Some({ ns: "wasi", name: "http", }))
 }
 
 ///|
 test "PackageName::parse invalid" {
   let pkg = @types.PackageName::parse("invalid")
-  inspect(pkg, content="None")
+  assert_true(pkg is None)
 }
 
 ///|
@@ -19,13 +19,13 @@ test "PackageName::to_string" {
 ///|
 test "AnyHash::parse valid" {
   let hash = @types.AnyHash::parse("sha256:abc123")
-  inspect(hash, content="Some({algorithm: \"sha256\", hex: \"abc123\"})")
+  assert_true(hash is Some({ algorithm: "sha256", hex: "abc123", }))
 }
 
 ///|
 test "AnyHash::parse invalid" {
   let hash = @types.AnyHash::parse("nocolon")
-  inspect(hash, content="None")
+  assert_true(hash is None)
 }
 
 ///|
@@ -186,5 +186,5 @@ test "WasmConfig::from_json" {
   inspect(comp.exports.length(), content="1")
   inspect(comp.exports[0], content="wasi:http/types@0.2.0")
   inspect(comp.imports.length(), content="0")
-  inspect(comp.target, content="None")
+  assert_true(comp.target is None)
 }

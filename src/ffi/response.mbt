@@ -25,7 +25,7 @@ pub fn Response::get_header(self : Response, name : String) -> String {
 ///|
 pub fn Response::text(self : Response) -> String {
   // UTF-8 decode from bytes
-  let buf = StringBuilder::new()
+  let buf = StringBuilder()
   let bytes = self.response_body
   let len = bytes.length()
   let mut i = 0

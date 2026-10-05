@@ -115,7 +115,7 @@ pub async fn sha256_hex(data : Bytes) -> String {
   }
 
   // Produce hex string
-  let hex = StringBuilder::new()
+  let hex = StringBuilder()
   for i = 0; i < 8; i = i + 1 {
     let v = h[i]
     for j = 7; j >= 0; j = j - 1 {
@@ -144,7 +144,7 @@ fn is_unreserved(c : Char) -> Bool {
 
 ///|
 pub fn url_encode(s : String) -> String {
-  let buf = StringBuilder::new()
+  let buf = StringBuilder()
   // Iterate chars directly and encode UTF-8 bytes
   for ch in s {
     let code = ch.to_int()

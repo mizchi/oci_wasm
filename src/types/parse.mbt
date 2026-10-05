@@ -30,7 +30,7 @@ pub fn OciManifest::from_json(json : Json) -> OciManifest? {
           }
         _ => return None
       }
-      Some(OciManifest::{ schema_version, media_type, config, layers })
+      Some(OciManifest::{ schema_version, media_type, config, layers, })
     }
     _ => None
   }
@@ -53,7 +53,7 @@ pub fn OciDescriptor::from_json(json : Json) -> OciDescriptor? {
         Some(String(s)) => s
         _ => return None
       }
-      Some(OciDescriptor::{ media_type, size, digest })
+      Some(OciDescriptor::{ media_type, size, digest, })
     }
     _ => None
   }
@@ -76,7 +76,7 @@ pub fn WasmConfig::from_json(json : Json) -> WasmConfig? {
         Some(c) => WasmComponentInfo::from_json(c)
         _ => None
       }
-      Some(WasmConfig::{ architecture, os, component })
+      Some(WasmConfig::{ architecture, os, component, })
     }
     _ => None
   }
@@ -113,7 +113,7 @@ pub fn WasmComponentInfo::from_json(json : Json) -> WasmComponentInfo? {
         Some(String(s)) => Some(s)
         _ => None
       }
-      Some(WasmComponentInfo::{ exports, imports, target })
+      Some(WasmComponentInfo::{ exports, imports, target, })
     }
     _ => None
   }
@@ -135,7 +135,7 @@ pub fn RegistryConfig::from_json(json : Json) -> RegistryConfig? {
             Some(String(s)) => s
             _ => ""
           }
-          Some(OciConfig::{ registry, namespace_prefix })
+          Some(OciConfig::{ registry, namespace_prefix, })
         }
         _ =>
           // Legacy format
@@ -145,7 +145,7 @@ pub fn RegistryConfig::from_json(json : Json) -> RegistryConfig? {
                 Some(String(s)) => s
                 _ => ""
               }
-              Some(OciConfig::{ registry, namespace_prefix })
+              Some(OciConfig::{ registry, namespace_prefix, })
             }
             _ => None
           }
@@ -179,7 +179,7 @@ pub fn RegistryConfig::from_json(json : Json) -> RegistryConfig? {
           None => return None
         }
       }
-      Some(RegistryConfig::{ preferred, oci, warg })
+      Some(RegistryConfig::{ preferred, oci, warg, })
     }
     _ => None
   }

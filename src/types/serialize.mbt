@@ -1,16 +1,16 @@
 ///|
 pub fn RegistryConfig::to_json(self : RegistryConfig) -> Json {
-  let obj : Map[String, Json] = {}
+  let obj : Map[String, Json] = Map([])
   match self.preferred {
     Oci(oci) => {
-      let pref : Map[String, Json] = {}
+      let pref : Map[String, Json] = Map([])
       pref["type"] = Json::string("oci")
       pref["registry"] = Json::string(oci.registry)
       pref["namespacePrefix"] = Json::string(oci.namespace_prefix)
       obj["preferred"] = Json::object(pref)
     }
     Warg(warg) => {
-      let pref : Map[String, Json] = {}
+      let pref : Map[String, Json] = Map([])
       pref["type"] = Json::string("warg")
       pref["url"] = Json::string(warg.url)
       obj["preferred"] = Json::object(pref)
@@ -18,7 +18,7 @@ pub fn RegistryConfig::to_json(self : RegistryConfig) -> Json {
   }
   match self.oci {
     Some(oci) => {
-      let o : Map[String, Json] = {}
+      let o : Map[String, Json] = Map([])
       o["registry"] = Json::string(oci.registry)
       o["namespacePrefix"] = Json::string(oci.namespace_prefix)
       obj["oci"] = Json::object(o)
@@ -27,7 +27,7 @@ pub fn RegistryConfig::to_json(self : RegistryConfig) -> Json {
   }
   match self.warg {
     Some(warg) => {
-      let w : Map[String, Json] = {}
+      let w : Map[String, Json] = Map([])
       w["url"] = Json::string(warg.url)
       obj["warg"] = Json::object(w)
     }
@@ -38,7 +38,7 @@ pub fn RegistryConfig::to_json(self : RegistryConfig) -> Json {
 
 ///|
 pub fn OciDescriptor::to_json(self : OciDescriptor) -> Json {
-  let obj : Map[String, Json] = {}
+  let obj : Map[String, Json] = Map([])
   obj["mediaType"] = Json::string(self.media_type)
   obj["size"] = Json::number(self.size.to_double())
   obj["digest"] = Json::string(self.digest)
@@ -47,7 +47,7 @@ pub fn OciDescriptor::to_json(self : OciDescriptor) -> Json {
 
 ///|
 pub fn OciManifest::to_json(self : OciManifest) -> Json {
-  let obj : Map[String, Json] = {}
+  let obj : Map[String, Json] = Map([])
   obj["schemaVersion"] = Json::number(self.schema_version.to_double())
   obj["mediaType"] = Json::string(self.media_type)
   obj["config"] = self.config.to_json()
@@ -61,12 +61,12 @@ pub fn OciManifest::to_json(self : OciManifest) -> Json {
 
 ///|
 pub fn WasmConfig::to_json(self : WasmConfig) -> Json {
-  let obj : Map[String, Json] = {}
+  let obj : Map[String, Json] = Map([])
   obj["architecture"] = Json::string(self.architecture)
   obj["os"] = Json::string(self.os)
   match self.component {
     Some(comp) => {
-      let c : Map[String, Json] = {}
+      let c : Map[String, Json] = Map([])
       let exports : Array[Json] = []
       for e in comp.exports {
         exports.push(Json::string(e))

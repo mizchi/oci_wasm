@@ -15,4 +15,3 @@ pub async fn fetch_registry_config(String) -> @types.RegistryConfig
 // Type aliases
 
 // Traits
-

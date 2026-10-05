@@ -32,4 +32,3 @@ pub fn Response::text(Self) -> String
 // Type aliases
 
 // Traits
-
