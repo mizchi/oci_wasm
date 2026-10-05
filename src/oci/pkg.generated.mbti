@@ -27,4 +27,3 @@ pub async fn OciClient::pull_wasm(Self, @types.PackageName, String) -> Bytes
 // Type aliases
 
 // Traits
-

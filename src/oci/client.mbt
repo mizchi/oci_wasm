@@ -37,7 +37,7 @@ pub async fn OciClient::new(
   validate_pkg(pkg)
   let repo = "\{namespace_prefix}\{pkg.ns}/\{pkg.name}"
   let token = @auth.fetch_token(registry, repo)
-  OciClient::{ registry, namespace_prefix, token }
+  OciClient::{ registry, namespace_prefix, token, }
 }
 
 ///|
@@ -47,7 +47,7 @@ fn OciClient::repo_name(self : OciClient, pkg : @types.PackageName) -> String {
 
 ///|
 fn OciClient::auth_headers(self : OciClient) -> Map[String, String] {
-  let headers : Map[String, String] = {}
+  let headers : Map[String, String] = Map([])
   if self.token != "" {
     headers["Authorization"] = "Bearer \{self.token}"
   }
@@ -171,7 +171,7 @@ async fn verify_digest(
 ) -> Unit raise Error {
   // Only verify sha256 digests
   guard expected_digest.has_prefix("sha256:") else { return }
-  let expected_hex = expected_digest.view(start_offset=7).to_string()
+  let expected_hex = expected_digest.view(start_offset=7).to_owned()
   let actual_hex = @ffi.sha256_hex(data)
   guard actual_hex == expected_hex else {
     raise Failure::Failure(

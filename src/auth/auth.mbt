@@ -10,27 +10,27 @@ priv struct AuthChallenge {
 /// Format: Bearer realm="...",service="...",scope="..."
 fn parse_www_authenticate(header : String) -> AuthChallenge? {
   guard header.has_prefix("Bearer ") else { return None }
-  let params = header.view(start_offset=7).to_string()
+  let params = header.view(start_offset=7).to_owned()
   let mut realm = ""
   let mut service = ""
   // Simple key=value parser
   let parts = params.split(",")
   for part in parts {
-    let kv = part.to_string().trim().to_string()
+    let kv = part.to_owned().trim().to_owned()
     if kv.has_prefix("realm=") {
-      realm = strip_quotes(kv.view(start_offset=6).to_string())
+      realm = strip_quotes(kv.view(start_offset=6).to_owned())
     } else if kv.has_prefix("service=") {
-      service = strip_quotes(kv.view(start_offset=8).to_string())
+      service = strip_quotes(kv.view(start_offset=8).to_owned())
     }
   }
   guard realm != "" else { return None }
-  Some(AuthChallenge::{ realm, service })
+  Some(AuthChallenge::{ realm, service, })
 }
 
 ///|
 fn strip_quotes(s : String) -> String {
   if s.length() >= 2 && s.has_prefix("\"") && s.has_suffix("\"") {
-    s.view(start_offset=1, end_offset=s.length() - 1).to_string()
+    s.view(start_offset=1, end_offset=s.length() - 1).to_owned()
   } else {
     s
   }

@@ -42,7 +42,7 @@ extern "js" fn js_response_all_headers(response : JsResponse) -> String =
 
 ///|
 fn headers_to_json(headers : Map[String, String]) -> String {
-  let buf = StringBuilder::new()
+  let buf = StringBuilder()
   buf.write_string("{")
   let mut first = true
   for k, v in headers {
@@ -63,7 +63,7 @@ fn headers_to_json(headers : Map[String, String]) -> String {
 
 ///|
 fn parse_headers_json(json_str : String) -> Map[String, String] {
-  let headers : Map[String, String] = {}
+  let headers : Map[String, String] = Map([])
   // Try to parse the JSON string for headers
   try {
     let json = @json.parse(json_str)
@@ -88,7 +88,7 @@ fn js_to_response(js_resp : JsResponse, body : Bytes) -> Response {
   let status_code = js_response_status(js_resp)
   let headers_json = js_response_all_headers(js_resp)
   let response_headers = parse_headers_json(headers_json)
-  Response::{ status_code, response_headers, response_body: body }
+  Response::{ status_code, response_headers, response_body: body, }
 }
 
 ///|
